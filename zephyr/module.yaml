@@ -1,5 +1,4 @@
 name: nice_view_custom
 build:
-  cmake: boards/shields/nice_view_custom
   settings:
     board_root: .
