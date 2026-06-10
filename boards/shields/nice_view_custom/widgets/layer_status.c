@@ -2,6 +2,8 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
+#if IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+
 #include <zmk/display.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/layer_state_changed.h>
@@ -38,3 +40,5 @@ lv_obj_t *zmk_widget_layer_status_obj(void) {
     update_layer_display();
     return layer_label;
 }
+
+#endif /* IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL) */
