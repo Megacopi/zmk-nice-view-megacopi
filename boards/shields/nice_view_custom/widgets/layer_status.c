@@ -11,10 +11,15 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 static lv_obj_t *layer_label;
 
 static void update_layer_display(void) {
-    uint8_t index = zmk_keymap_layer_state_active_index();
-    char buf[12];
-    snprintf(buf, sizeof(buf), "L%d", index);
-    lv_label_set_text(layer_label, buf);
+    zmk_keymap_layer_index_t index = zmk_keymap_highest_layer_active();
+    const char *name = zmk_keymap_layer_name(index);
+    if (name == NULL || name[0] == '\0') {
+        char buf[8];
+        snprintf(buf, sizeof(buf), "L%d", index);
+        lv_label_set_text(layer_label, buf);
+    } else {
+        lv_label_set_text(layer_label, name);
+    }
 }
 
 static int layer_event_handler(const zmk_event_t *eh) {

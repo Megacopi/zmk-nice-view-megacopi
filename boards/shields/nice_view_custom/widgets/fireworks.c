@@ -4,7 +4,7 @@
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include <zmk/display.h>
-#include <zmk/events/wpm_state_changed.h>
+#include <zmk/wpm.h>
 #include <lvgl.h>
 #include <string.h>
 
@@ -50,7 +50,7 @@ static void spawn_rocket(void) {
             rockets[i].x = 8 + (my_rand() % (SCREEN_W - 16));
             rockets[i].y = SCREEN_H - 1;
             // Speed: idle=1..2, typing=3..5
-            uint8_t wpm = zmk_wpm_get_wpm();
+            uint8_t wpm = zmk_wpm_get_state();
             int speed = (wpm > 20) ? (3 + my_rand() % 3) : (1 + my_rand() % 2);
             rockets[i].vy = -speed;
             rockets[i].trail = 0;
@@ -60,7 +60,7 @@ static void spawn_rocket(void) {
 }
 
 static void explode(int16_t x, int16_t y) {
-    uint8_t wpm = zmk_wpm_get_wpm();
+    uint8_t wpm = zmk_wpm_get_state();
     int count = (wpm > 20) ? 20 : 10;
     int spawned = 0;
     for (int i = 0; i < MAX_PARTICLES && spawned < count; i++) {
@@ -110,7 +110,7 @@ static void draw_frame(void) {
 }
 
 static void fireworks_timer_cb(lv_timer_t *timer) {
-    uint8_t wpm = zmk_wpm_get_wpm();
+    uint8_t wpm = zmk_wpm_get_state();
 
     // Spawn logic: idle = ~every 4 ticks, typing = ~every 1-2 ticks
     uint32_t r = my_rand() % 8;
