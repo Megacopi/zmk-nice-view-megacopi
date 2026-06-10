@@ -1,0 +1,2 @@
+config SHIELD_NICE_VIEW_CUSTOM
+    bool "Nice View Custom"

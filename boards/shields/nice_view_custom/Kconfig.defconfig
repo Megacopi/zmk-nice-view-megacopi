@@ -1,0 +1,12 @@
+if SHIELD_NICE_VIEW_CUSTOM
+
+config SHIELD_NICE_VIEW_CUSTOM
+    default y
+
+config ZMK_DISPLAY
+    default y
+
+config ZMK_WPM
+    default y
+
+endif

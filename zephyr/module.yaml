@@ -1,0 +1,4 @@
+name: nice_view_custom
+build:
+  cmake: .
+  kconfig: Kconfig
