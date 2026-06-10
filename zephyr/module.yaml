@@ -1,4 +1,3 @@
 name: nice_view_custom
 build:
-  cmake: .
-  kconfig: Kconfig
+  cmake: boards/shields/nice_view_custom
