@@ -32,7 +32,7 @@ ZMK_SUBSCRIPTION(layer_status, zmk_layer_state_changed);
 
 lv_obj_t *zmk_widget_layer_status_obj(void) {
     layer_label = lv_label_create(lv_scr_act());
-    lv_obj_set_style_text_font(layer_label, &lv_font_montserrat_24, 0);
+    lv_obj_set_style_text_font(layer_label, &lv_font_montserrat_26, 0);
     lv_label_set_text(layer_label, "BASE");
     lv_obj_align(layer_label, LV_ALIGN_CENTER, 0, 0);
     update_layer_display();

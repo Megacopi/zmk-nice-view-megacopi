@@ -27,7 +27,7 @@ ZMK_SUBSCRIPTION(battery_status, zmk_battery_state_changed);
 
 lv_obj_t *zmk_widget_battery_status_obj(void) {
     battery_label = lv_label_create(lv_scr_act());
-    lv_obj_set_style_text_font(battery_label, &lv_font_montserrat_14, 0);
+    lv_obj_set_style_text_font(battery_label, &lv_font_montserrat_16, 0);
     lv_label_set_text(battery_label, "?%");
     lv_obj_align(battery_label, LV_ALIGN_BOTTOM_RIGHT, -4, -4);
     update_battery_display();
